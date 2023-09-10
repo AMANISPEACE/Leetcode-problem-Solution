@@ -1,0 +1,66 @@
+Problem no:   1281. Subtract the Product and Sum of Digits of an Integer
+Easy
+2.4K
+221
+Companies
+Given an integer number n, return the difference between the product of its digits and the sum of its digits.
+ 
+
+Example 1:
+
+Input: n = 234
+Output: 15 
+Explanation: 
+Product of digits = 2 * 3 * 4 = 24 
+Sum of digits = 2 + 3 + 4 = 9 
+Result = 24 - 9 = 15
+Example 2:
+
+Input: n = 4421
+Output: 21
+Explanation: 
+Product of digits = 4 * 4 * 2 * 1 = 32 
+Sum of digits = 4 + 4 + 2 + 1 = 11 
+Result = 32 - 11 = 21
+ 
+
+Constraints:
+
+1 <= n <= 10^5
+
+
+
+
+----------------------------------------------------------
+Solution in  c++ :
+
+
+class Solution {
+public:
+    int subtractProductAndSum(int n) {
+        // Initialize variables for sum and product
+        int sum = 0;
+        int prod = 1;
+
+        // Loop until n becomes 0 (extracting digits from right to left)
+        while (n != 0) {
+            // Extract the last digit of n
+            int digit = (n % 10);
+
+            // Multiply the digit to the product
+            prod = prod * digit;
+
+            // Add the digit to the sum
+            sum = sum + digit;
+
+            // Remove the last digit from n by dividing by 10
+            n = n / 10;
+        }
+
+        // Calculate the final result by subtracting the product from the sum
+        int ans = prod - sum;
+
+        // Return the result
+        return ans;
+    }
+};
